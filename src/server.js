@@ -1,12 +1,21 @@
 const http = require('http');
-const app=require('./app');
+const app = require('./app');
+const { readInPlanets }=require('./models/planetsModel')
+
 const PORT = process.env.PORT || 5000;
 
 //using inbuild nodejs module to create server.
 const server = http.createServer(app);
-server.listen(PORT, () => {
-  console.log(`listening on ${PORT}`);
-})
+
+async function startServer() {
+  await readInPlanets();
+  server.listen(PORT, () => {
+    console.log(`listening on ${PORT}...`);
+  });
+}
+
+startServer();
+
 
 
 //using express to create the server
