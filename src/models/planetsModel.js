@@ -36,9 +36,13 @@ function isHabitable(planet){
   
 }
 
+function getAllPlanets(){
+  return habitablePlanets;
+}
+
   
 module.exports = {
   readInPlanets,
-  planets: habitablePlanets,
+  getAllPlanets,
   
   }
