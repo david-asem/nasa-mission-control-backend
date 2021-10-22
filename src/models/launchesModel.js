@@ -8,7 +8,7 @@ const launch = {
   rocketType: 'Explorer IS1',
   launchDate: new Date('January 1, 2025'),
   destinationPlanet: 'Kepler-442 b',
-  customer: ['SPACEX', 'NASA', 'ESA', 'ROSCOSMOS', 'BLUE ORIGIN', 'VIRGIN GALACTIC'],
+  customers: ['SPACEX', 'NASA', 'ESA', 'ROSCOSMOS', 'BLUE ORIGIN', 'VIRGIN GALACTIC'],
   upcoming: true,
   success:true,
 };
@@ -23,7 +23,7 @@ function addNewLaunch(launch) {
   latestFlightNumber++;
   launches.set(latestFlightNumber, Object.assign(launch, {
     flightNumber: latestFlightNumber,
-    customer: ['SPACEX', 'NASA', 'ESA', 'ROSCOSMOS', 'BLUE ORIGIN', 'VIRGIN GALACTIC'],
+    customers: ['SPACEX', 'NASA', 'ESA', 'ROSCOSMOS', 'BLUE ORIGIN', 'VIRGIN GALACTIC'],
     upcoming: true,
     success:true,
 
