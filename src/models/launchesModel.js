@@ -1,4 +1,4 @@
-const launches = new Map();
+const launches = require('./launchesSchema');
 
 let latestFlightNumber = 201;
 
@@ -8,7 +8,7 @@ const launch = {
   rocketType: 'Explorer IS1',
   launchDate: new Date('January 1, 2025'),
   destinationPlanet: 'Kepler-442 b',
-  customers: ['SPACEX', 'NASA', 'ESA', 'ROSCOSMOS', 'BLUE ORIGIN', 'VIRGIN GALACTIC'],
+  sponsors: ['SPACEX', 'NASA', 'ESA', 'ROSCOSMOS', 'BLUE ORIGIN', 'VIRGIN GALACTIC'],
   upcoming: true,
   success:true,
 };
@@ -27,7 +27,7 @@ function addNewLaunch(launch) {
   latestFlightNumber++;
   launches.set(latestFlightNumber, Object.assign(launch, {
     flightNumber: latestFlightNumber,
-    customers: ['SPACEX', 'NASA', 'ESA', 'ROSCOSMOS', 'BLUE ORIGIN', 'VIRGIN GALACTIC'],
+    sponsors: ['SPACEX', 'NASA', 'ESA', 'ROSCOSMOS', 'BLUE ORIGIN', 'VIRGIN GALACTIC'],
     upcoming: true,
     success:true,
 

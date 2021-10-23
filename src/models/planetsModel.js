@@ -1,9 +1,10 @@
 const fs = require('fs');
+const planets = require('./planetsSchema');
 const path = require('path');
 const parse = require('csv-parse');
 
 
-const habitablePlanets = [];
+const habitablePlanets = planets;
 
 
 function readInPlanets() {
