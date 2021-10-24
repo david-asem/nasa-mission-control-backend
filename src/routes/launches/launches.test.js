@@ -1,7 +1,15 @@
 const request = require('supertest');
-
+const { mongoConnect, mongoDisconnect } = require('../../services/mongo')
 const app = require('../../app');
 
+
+describe('Launch API', () => {
+  beforeAll(async () => {
+    await mongoConnect();
+  });
+  afterAll(async () => {
+    await mongoDisconnect();
+  });
 
 //testing the get endpoint
 describe('TEST GET /api/v1/launches', () => {
@@ -14,20 +22,20 @@ describe('TEST POST /api/v1/launches', () => {
   const completeLaunchData = {
     missionName: 'Star Trek Enterprise',
     rocketType: 'Dragon 1',
-    destinationPlanet: 'Kepler 442 b',
+    destinationPlanet: 'Kepler-442 b',
     launchDate: '23 June, 2030'
   };
 
   const launchDataWithoutDate = {
     missionName: 'Star Trek Enterprise',
     rocketType: 'Dragon 1',
-    destinationPlanet: 'Kepler 442 b',
+    destinationPlanet: 'Kepler-442 b',
   };
 
   const InvalidlaunchData = {
     missionName: 'Star Trek Enterprise',
     rocketType: 'Dragon 1',
-    destinationPlanet: 'Kepler 442 b',
+    destinationPlanet: 'Kepler-442 b',
     launchDate: '23 2030 f'
   };
 
@@ -63,3 +71,7 @@ describe('TEST POST /api/v1/launches', () => {
       });
     });
 });
+
+
+});
+
