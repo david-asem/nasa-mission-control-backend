@@ -19,7 +19,6 @@ const launchesSchema = new mongoose.Schema({
   },
   destinationPlanet: {
     type: String,
-    required: true,
   },
   sponsors: [String],
   upcoming: {
