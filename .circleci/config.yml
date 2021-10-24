@@ -5,8 +5,6 @@ jobs:
       - image: circleci/node:14.18.1
     steps:
           - checkout
-          - node/install-packages:
-              pkg-manager: npm
           - run:
               name: Install npm dependencies
               command: npm install
