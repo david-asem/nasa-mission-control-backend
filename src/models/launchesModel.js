@@ -1,21 +1,10 @@
 const axios = require('axios');
 const launches = require('./launchesSchema');
-const planets = require('./planetsSchema')
+const planets = require('./planetsSchema');
+
+
 
 const DefaultFlightNumber = 201;
-
-const launch = {
-  flightNumber: 201,
-  missionName: 'Kepler Exploration T',
-  rocketType: 'Explorer IS1',
-  launchDate: new Date('January 1, 2025'),
-  destinationPlanet: 'Kepler-442 b',
-  sponsors: ['SPACEX', 'NASA', 'ESA', 'ROSCOSMOS', 'BLUE ORIGIN', 'VIRGIN GALACTIC'],
-  upcoming: true,
-  success:true,
-};
-
-saveLaunch(launch);
 
 const SPACEX_API_URI = 'https://api.spacexdata.com/v4/launches/query'
 
@@ -96,9 +85,12 @@ async function loadLaunchesData() {
     });
   }
 
-  async function getAllLaunches() {
+  async function getAllLaunches(skip, limit) {
     return await launches.find({},
-      { '_id': 0, '__v': 0 });
+      { '_id': 0, '__v': 0 })
+      .skip(skip)
+      .sort({flightNumber: 1})
+      .limit(limit);
   }
 
   async function saveLaunch(launch) {
