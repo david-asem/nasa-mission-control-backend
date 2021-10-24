@@ -16,7 +16,7 @@ jobs:
 workflows:
   run-test:
     jobs:
-      - test
+      - run-test
     
   
       
