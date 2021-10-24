@@ -20,8 +20,8 @@ function readInPlanets() {
         console.log('err');
         reject(err)
       }).on('end', async () => {
-        const numberOfPlanetsFound = (await getAllPlanets()).length;
-        console.log(`There are ${numberOfPlanetsFound} habitable planets found!!`)
+        // const numberOfPlanetsFound = (await getAllPlanets()).length;
+        // console.log(`There are ${numberOfPlanetsFound} habitable planets found!!`)
           resolve();
     
       });

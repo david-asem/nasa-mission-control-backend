@@ -1,9 +1,10 @@
+require('dotenv').config({ path: './.env' });
+const { mongoConnect }=require('./services/mongo');
 const http = require('http');
 const app = require('./app');
-const {mongoConnect}=require('./services/mongo')
 const { readInPlanets }=require('./models/planetsModel')
 const { loadLaunchesData }= require('./models/launchesModel')
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 //using inbuild nodejs module to create server.
 const server = http.createServer(app);

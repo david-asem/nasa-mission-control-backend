@@ -2,15 +2,12 @@ const axios = require('axios');
 const launches = require('./launchesSchema');
 const planets = require('./planetsSchema');
 
-
-
 const DefaultFlightNumber = 201;
 
-const SPACEX_API_URI = 'https://api.spacexdata.com/v4/launches/query'
+const API_URL = process.env.SPACEX_API_URL;
 
 async function populateLaunches() {
-  console.log('Getting launch data from SPACEX...')
-  const res = await axios.post(SPACEX_API_URI, {
+  const res = await axios.post(API_URL, {
     query: {},
     options: {
       pagination:false,
@@ -54,7 +51,7 @@ async function populateLaunches() {
       sponsors,
     };
 
-    console.log(`${launch.flightNumber} ${launch.missionName}`);
+    //console.log(`${launch.flightNumber} ${launch.missionName}`);
 
     await saveLaunch(launch);
   }
@@ -67,12 +64,7 @@ async function loadLaunchesData() {
     rocketType: 'Falcon 1',
     missionName: 'FalconSat',
   });
-  if (firstLaunch) {
-    console.log('Launch data already exist');
-    
-  } else {
-    await populateLaunches();
-  }
+  await populateLaunches(firstLaunch);
   
 }
   async function findLaunch(filter) {
